@@ -1,0 +1,7 @@
+.greeting-title {
+    text-align: center;
+    font-size: 4rem;
+    color: blueviolet;
+    text-shadow: 1px 1px 2px black;
+    padding-top: 10px;
+}
