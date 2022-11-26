@@ -11,7 +11,7 @@ const NavBar = () => {
         <img
           className="logo-navbar"
           src="https://i.postimg.cc/yN4v1rMz/dush-logo-Mesa-de-trabajo-1.png"
-          alt=""
+          alt="logoDushArt"
         />
       </div>
       <ul className="navbar">
