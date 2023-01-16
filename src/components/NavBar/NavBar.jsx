@@ -6,7 +6,6 @@ import { CartWidget } from "../CartWidget/CartWidget";
 
 const NavBar = () => {
 
-  const nombre = "Todas"
   return (
     <div className="navbar-container">
       <div className="container-logo">

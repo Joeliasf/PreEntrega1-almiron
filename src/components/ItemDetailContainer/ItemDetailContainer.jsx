@@ -1,31 +1,32 @@
 
-import React, { useEffect, useState } from 'react'
-
-import { products } from '../../ProductsMock'
+import React, { useEffect, useState } from "react"
 
 import { useParams } from "react-router-dom"
+import ItemDetail from "../ItemDetail/ItemDetail"
 
-import "./ItemDetailContainer.css"
+import { getDoc, doc, collection } from "firebase/firestore"
+import { db } from "../../firebaseConfig"
 
 const ItemDetailContainer = () => {
-
   const [product, setProduct] = useState({})
 
   const { id } = useParams()
 
-  useEffect( ()=>{
+  useEffect(() => {
+    const itemCollection = collection(db, "products")
+    const ref = doc(itemCollection, id)
 
-    const productSelected = products.find( producto => producto.id === parseInt(id) )
-    setProduct(productSelected)
-
+    getDoc(ref).then((res) => {
+      setProduct({
+        id: res.id,
+        ...res.data(),
+      })
+    })
   }, [id])
 
   return (
-    <div className='item-card'>
-        <h2>{product.name}</h2>
-        <h3>{product.description}</h3>
-        <img src={product.img} alt="" />
-        <h4>${product.price}</h4>
+    <div className="container-detail">
+      <ItemDetail product={product} />
     </div>
   )
 }

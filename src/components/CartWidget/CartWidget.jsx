@@ -1,12 +1,14 @@
+import { useContext } from "react"
 import "./CartWidget.css"
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
-
+import { CartContext } from "../../context/CartContext"
 
 export const CartWidget = () => {
+  const { cart } = useContext(CartContext)
   return (
     <div className="container-cart">
-      < Link to="/proyectoCarrito" >
+      < Link to="cart" >
       <AiOutlineShoppingCart
         style={{
           color: "blue",
@@ -17,9 +19,9 @@ export const CartWidget = () => {
           width : "30px",
         }}
       />
-      <div className="contador-carrito"> 
-        <p>5</p>
-      </div>
+        <div className="bubble-counter">
+          <span style={{color: "black"}}>{cart.length}</span>
+        </div>
       </Link>
     </div>
   );
